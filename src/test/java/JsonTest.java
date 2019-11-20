@@ -9,18 +9,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-import com.lillink.parsefourtype.model.*;
-import com.lillink.parsefourtype.service.*;
-import com.lillink.parsefourtype.service.parser.JsonCompanyParser;
-import com.lillink.parsefourtype.service.writer.JsonCompanyWriter;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-*/
 
 public class JsonTest {
 
