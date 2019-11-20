@@ -1,21 +1,45 @@
 package models;
 
+import adapter.LocaleDateAdapter;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.Objects;
 
 
+@XmlRootElement(name = "Worker")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Worker {
     /*
      *This method has fields such as:
      *airport number (id), name and head
 
      */
+    @XmlElement
     private int id;
+
+    @XmlElement
     private String name;
+
+    @XmlElement
+    @XmlJavaTypeAdapter(LocaleDateAdapter.class)
     private LocalDate dateOfBirth;
+
+    @XmlElement
+    @XmlJavaTypeAdapter(LocaleDateAdapter.class)
     private LocalDate dateOfHiring;
+
+    @XmlElement
     private int phoneNumber;
+
+    @XmlElement
     private int passportNumber;
+
+    @XmlElement
     private String education;
 
 

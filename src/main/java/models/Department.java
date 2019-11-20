@@ -1,18 +1,29 @@
 package models;
 
+import javax.xml.bind.annotation.*;
 import java.util.List;
 import java.util.Objects;
 
-
+@XmlRootElement(name = "Department")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Department {
     /*
      *This method has fields such as:
      *department number (id), departmentname and head
 
      */
+
+    @XmlElement
     private int id;
+
+    @XmlElement
     private String name;
+
+    @XmlElement
     private Worker head;
+
+    @XmlElement
+    @XmlElementWrapper
     private List<Worker> worker;
 
 //    {
@@ -83,7 +94,7 @@ public class Department {
         return worker;
     }
 
-    public void setWorker(List<Worker> woker) { this.worker = worker;
+    public void setWorker(List<Worker> worker) { this.worker = worker;
     }
 
     @Override

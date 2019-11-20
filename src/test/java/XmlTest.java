@@ -1,26 +1,27 @@
+
 import models.Department;
 import models.Worker;
 import org.junit.Assert;
 import org.junit.Test;
 import service.Parser;
 import service.Writer;
-import service.parser.JsonParser;
-import service.writer.JsonWriter;
+import service.parser.XmlParser;
+import service.writer.XmlWriter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class JsonTest {
-
+public class XmlTest {
     @Test
-    public void serializeTest(){
+    public void serializeTest() {
 
-        String path = "department.json";
-        Writer<Department> writer = new JsonWriter(path);
 
-        List<Worker> workerList = new ArrayList<Worker>();
+        String path = "department.xml";
+        Writer<Department> writer = new XmlWriter(path);
+
+        List<Worker> workerList = new ArrayList<>();
         Worker worker1 = new Worker();
         worker1.setId(1);
         worker1.setName("Moiseienko Lisa");
@@ -57,11 +58,13 @@ public class JsonTest {
         department.setHead(worker3);
         department.setWorker(workerList);
 
-    writer.writeToFile(department);
+        writer.writeToFile(department);
 
-        Parser<Department> parser = new JsonParser(path);
+
+        Parser<Department> parser = new XmlParser(path);
         Department department1 = parser.parse().orElseThrow(RuntimeException::new);
 
-        Assert.assertEquals(department.toString().trim(),department1.toString().trim());
+
+        Assert.assertEquals(department.toString().trim(), department1.toString().trim());
     }
 }

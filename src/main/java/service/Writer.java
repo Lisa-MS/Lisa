@@ -2,6 +2,8 @@ package service;
 
 import models.Department;
 
+import java.util.Optional;
+
 public abstract class Writer<T> {
 
     protected final String path;
@@ -10,5 +12,5 @@ public abstract class Writer<T> {
         this.path = path;
     }
 
-    public abstract void writeToFile(Department department);
+    public abstract Optional<T> writeToFile(T object);
 }

@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class JsonWriter extends Writer<Department> {
     public JsonWriter(String path){
@@ -17,16 +18,17 @@ public class JsonWriter extends Writer<Department> {
     }
 
     @Override
-    public void writeToFile(Department department){
+    public Optional<Department> writeToFile(Department department){
         try {
-            serializeJson(department);
+            return this.serializeJson(department);
         }
         catch (IOException e){
             e.printStackTrace();
         }
+        return Optional.empty();
     }
 
-    public void serializeJson(Department department) throws IOException {
+    public Optional<Department> serializeJson(Department department) throws IOException {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, new LocaleDateAdapterJson()).create();
 
@@ -34,7 +36,7 @@ public class JsonWriter extends Writer<Department> {
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write(gson.toJson(department));
         fileWriter.close();
-
+        return Optional.of(department);
     }
 
 }

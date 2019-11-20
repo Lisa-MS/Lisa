@@ -8,6 +8,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 public class XmlWriter extends Writer<Department> {
 
@@ -16,18 +17,20 @@ public class XmlWriter extends Writer<Department> {
     }
 
     @Override
-    public void writeToFile(Department department){
+    public Optional<Department> writeToFile(Department department){
         try {
-            serializeXml(department);
+            return this.serializeXml(department);
         }catch (IOException | JAXBException e){
             e.printStackTrace();
         }
+        return Optional.empty();
     }
 
-    public void serializeXml(Department department) throws IOException, JAXBException {
+    public Optional<Department> serializeXml(Department department) throws IOException, JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Department.class);
         Marshaller marshaller = jaxbContext.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,true);
         marshaller.marshal(department, new File(path));
+        return Optional.of(department);
     }
 }
