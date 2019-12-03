@@ -22,7 +22,7 @@ public class JsonTest {
 
         List<Worker> workerList = new ArrayList<Worker>();
         Worker worker1 = new Worker();
-        worker1.setId(1);
+        worker1.setId(1L);
         worker1.setName("Moiseienko Lisa");
         worker1.setDateOfBirth(LocalDate.parse("2000-08-23"));
         worker1.setDateOfHiring(LocalDate.parse("2016-01-01"));
@@ -31,7 +31,7 @@ public class JsonTest {
         worker1.setEducation("Economist");
 
         Worker worker2 = new Worker();
-        worker2.setId(2);
+        worker2.setId(2L);
         worker2.setName("Ilika Katya");
         worker2.setDateOfBirth(LocalDate.parse("2002-10-06"));
         worker2.setDateOfHiring(LocalDate.parse("2016-01-01"));
@@ -40,7 +40,7 @@ public class JsonTest {
         worker2.setEducation("Teacher");
 
         Worker worker3 = new Worker();
-        worker3.setId(3);
+        worker3.setId(3L);
         worker3.setName("Grushka Yulia");
         worker3.setDateOfBirth(LocalDate.parse("2001-05-14"));
         worker3.setDateOfHiring(LocalDate.parse("2016-01-01"));
@@ -52,7 +52,7 @@ public class JsonTest {
         workerList.add(worker2);
 
         Department department = new Department();
-        department.setId(1);
+        department.setId(1L);
         department.setName("Test");
         department.setHead(worker3);
         department.setWorker(workerList);

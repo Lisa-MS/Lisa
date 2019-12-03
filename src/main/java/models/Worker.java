@@ -2,6 +2,8 @@ package models;
 
 import adapter.LocaleDateAdapter;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -20,26 +22,37 @@ public class Worker {
 
      */
     @XmlElement
-    private int id;
+    @NotNull
+    private Long id;
 
     @XmlElement
+    @NotNull(message = "Name worker must be not null")
+    @Size(min = 5, max = 32, message ="{Size.name}" )
     private String name;
 
     @XmlElement
     @XmlJavaTypeAdapter(LocaleDateAdapter.class)
+    @NotNull(message = "DateOfBirth must be not null")
     private LocalDate dateOfBirth;
 
     @XmlElement
     @XmlJavaTypeAdapter(LocaleDateAdapter.class)
+    @NotNull(message = "DateOfHiring must be not null")
     private LocalDate dateOfHiring;
 
     @XmlElement
+    @NotNull(message = "PhoneNumber must be not null")
+    @Size( max = 10, message ="{Size.phoneNumber}" )
     private int phoneNumber;
 
     @XmlElement
+    @NotNull(message = "PasportNumber must be not null")
+    @Size( max = 8, message ="{Size.passportNumber}" )
     private int passportNumber;
 
     @XmlElement
+    @NotNull(message = "Education worker must be not null")
+    @Size(min = 5, max = 32, message ="{Size.education}" )
     private String education;
 
 
@@ -49,7 +62,7 @@ public class Worker {
      *This is constryctors
      */
 
-    public Worker(int id, String name, LocalDate dateOfBirth, LocalDate dateOfHiring, int phoneNumber, int passportNumber, String education) {
+    public Worker(Long id, String name, LocalDate dateOfBirth, LocalDate dateOfHiring, int phoneNumber, int passportNumber, String education) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -59,11 +72,11 @@ public class Worker {
         this.education = education;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -152,7 +165,7 @@ public class Worker {
         public Builder() {
             newWorker = new Worker();
         }
-        public Builder withId(int id){
+        public Builder withId(Long id){
             newWorker.id = id;
             return this;
         }

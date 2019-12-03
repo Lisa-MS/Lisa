@@ -18,7 +18,7 @@ public class BuilderTest {
     @Before
     public void createWorker(){
         Worker worker1 = new Worker();
-        worker1.setId(1);
+        worker1.setId(1L);
         worker1.setName("Worker 1");
         worker1.setDateOfBirth(LocalDate.parse("1985-12-31"));
         worker1.setDateOfHiring(LocalDate.parse("2017-12-31"));
@@ -28,7 +28,7 @@ public class BuilderTest {
         workers.add(worker1);
 
         Worker worker2 = new Worker();
-        worker2.setId(2);
+        worker2.setId(2L);
         worker2.setName("Worker 2");
         worker2.setDateOfBirth(LocalDate.parse("2001-12-31"));
         worker2.setDateOfHiring(LocalDate.parse("2017-06-30"));
@@ -37,7 +37,7 @@ public class BuilderTest {
         worker2.setEducation("Teacher");
         workers.add(worker2);
 
-        head.setId(2);
+        head.setId(2L);
         head.setName("Worker 3");
         head.setDateOfBirth(LocalDate.parse("1988-12-31"));
         head.setDateOfHiring(LocalDate.parse("2017-04-30"));
@@ -49,7 +49,7 @@ public class BuilderTest {
     @Test
     public void departmentBuilderTest(){
         Department.Builder department = new Department.Builder()
-                .withId(1)
+                .withId(1L)
                 .withDepartmentName("Finance")
                 .withHead(head)
                 .withWorker(workers);

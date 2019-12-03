@@ -1,5 +1,7 @@
 package models;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 import java.util.Objects;
@@ -14,16 +16,22 @@ public class Department {
      */
 
     @XmlElement
-    private int id;
+    @NotNull
+    private Long id;
 
     @XmlElement
+    @NotNull(message = "Name department must be not null")
+    @Size(min = 5, max = 32, message ="{Size.name}" )
     private String name;
 
     @XmlElement
+    @NotNull(message = "Name worker must be not null")
+    @Size(min = 5, max = 32, message ="{Size.head}" )
     private Worker head;
 
     @XmlElement
     @XmlElementWrapper
+    @NotNull(message = "Worker must be not null")
     private List<Worker> worker;
 
 //    {
@@ -40,7 +48,7 @@ public class Department {
      *This is constryctors
      */
 
-    public Department(int id, String departamentname, Worker head, List<Worker> worker ) {
+    public Department(Long id, String departamentname, Worker head, List<Worker> worker ) {
         this.id = id;
         this.name = departamentname;
         this.head = head;
@@ -52,7 +60,7 @@ public class Department {
      * the Id value
      */
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
     /*
@@ -61,7 +69,7 @@ public class Department {
      */
 
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     /*
@@ -129,7 +137,7 @@ public class Department {
         public Builder() {
             newDepartment = new Department();
         }
-        public Builder withId(int id){
+        public Builder withId(Long id){
             newDepartment.id = id;
             return this;
         }
