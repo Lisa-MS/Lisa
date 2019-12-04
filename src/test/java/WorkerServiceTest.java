@@ -6,22 +6,19 @@ import org.junit.Test;
 import streams.WorkerSt;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class WorkerServiceTest {
 
     private WorkerSt workerService;
 
-    private Department department;
+    private Department department = new Department();
 
-    private Worker worker1;
+    private Worker worker1 = new Worker();
 
-    private Worker worker2;
+    private Worker worker2 = new Worker();
 
-    private List<Worker> workerList;
+    private List<Worker> workerList = new ArrayList<>();
 
     @Before
     public void setUp(){
@@ -57,8 +54,8 @@ public class WorkerServiceTest {
     public void sortWorkersByPassportNumber(){
         department.setWorker(workerList);
 
-        SortedSet<Worker> sortedWorkers = workerService.sortedWorkerByPassportNumber();
-        SortedSet<Worker> expectedSortedWorkers = new TreeSet<>();
+        List<Worker> sortedWorkers = workerService.sortedWorkerByPassportNumber();
+        List<Worker> expectedSortedWorkers = new ArrayList<>();
         expectedSortedWorkers.add(worker1);
         expectedSortedWorkers.add(worker2);
 
@@ -69,8 +66,8 @@ public class WorkerServiceTest {
     public void sortWorkersByBirthDate(){
         department.setWorker(workerList);
 
-        SortedSet<Worker> sortedWorkers = workerService.sortedWorkerByBirthDate();
-        SortedSet<Worker> expectedSortedWorkers = new TreeSet<>();
+        List<Worker> sortedWorkers = workerService.sortedWorkerByBirthDate();
+        List<Worker> expectedSortedWorkers = new ArrayList<>();
         expectedSortedWorkers.add(worker1);
         expectedSortedWorkers.add(worker2);
 
@@ -81,8 +78,8 @@ public class WorkerServiceTest {
     public void sortWorkersByHiringDate(){
         department.setWorker(workerList);
 
-        SortedSet<Worker> sortedWorkers = workerService.sortedWorkerByHiringDate();
-        SortedSet<Worker> expectedSortedWorkers = new TreeSet<>();
+        List<Worker> sortedWorkers = workerService.sortedWorkerByHiringDate();
+        List<Worker> expectedSortedWorkers = new ArrayList<>();
         expectedSortedWorkers.add(worker1);
         expectedSortedWorkers.add(worker2);
 
